@@ -23,7 +23,7 @@
 
 (test/deftest map-string
               (test/is
-               (= :foo
-                  (daniel-json.main/read-str (slurp "./test.json")))))
+               (= {"foo" ["tis a \\ big \\ string\\nanother\\tline" {"egg" "bar", "nested" [1 2 3 4 5]} ["array" "in" "array"]], "isIt" true}
+                  (daniel-json.main/read-str (slurp "./test/daniel_json/test.json")))))
 
 (test/run-all-tests #"daniel-json")
