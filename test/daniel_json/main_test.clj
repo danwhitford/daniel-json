@@ -21,4 +21,9 @@
                (= [1 2 3 4 ["a", "b", "c", "d"]]
                   (daniel-json.main/read-str "[1,2,3,4, [\"a\", \"b\",  \"c\",   \"d\"]]"))))
 
+(test/deftest map-string
+              (test/is
+               (= :foo
+                  (daniel-json.main/read-str (slurp "./test.json")))))
+
 (test/run-all-tests #"daniel-json")

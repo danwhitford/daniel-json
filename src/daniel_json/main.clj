@@ -66,14 +66,14 @@
     (list (first tokens) (rest tokens))))
 
 (defn get-map [tokens]
-  (loop [tokens tokens ret []]
+  (loop [tokens tokens ret {}]
     (let [[key _ & remaining] tokens
           [val rst] (make-clj-val remaining)]
 
       (case (first rst)
-        :rcurly (list (conj ret val) (rest rst))
-        :comma (recur (rest rst) (conj ret val))
-        :vec-error))))
+        :rcurly (list (merge ret {key val}) (rest rst))
+        :comma (recur (rest rst) (merge ret {key val}))
+        :map-error))))
 
 (defn get-vec [tokens]
   (loop [tokens tokens ret []]
