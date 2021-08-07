@@ -54,7 +54,7 @@
       \t (do (unread-char pbr fchar) (get-true pbr))
       \f (do (unread-char pbr fchar) (get-false pbr))
       (\0 \1 \2 \3 \4 \5 \6 \7 \8 \9) (do (unread-char pbr fchar) (get-number pbr))
-      fchar)))
+      :?)))
 
 (defn get-tokens [pbr]
   (loop [pbr pbr tokens []]
